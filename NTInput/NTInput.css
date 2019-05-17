@@ -2,29 +2,29 @@ NTInput {
     padding: 8 16 0;
 }
 
-.input__label {
+.nt-input__label {
     font-size: 16;
 }
 
-.input__field {
+.nt-input__field {
 }
 
-.input__icon {
+.nt-input__icon {
     font-size: 24;
     vertical-align: center;
     horizontal-align: right;
     margin: -15 10 0 0;
 }
 
-.input__icon.fa-check-circle {
+.nt-input__icon.fa-check-circle {
     color: forestgreen;
 }
 
-.input__icon.fa-exclamation-circle {
+.nt-input__icon.fa-exclamation-circle {
     color: darkred;
 }
 
-.input__validation {
+.nt-input__validation {
     margin: -15 0 0 30;
     width: 100%;
     height: 60;
@@ -32,11 +32,11 @@ NTInput {
     visibility: collapsed;
 }
 
-.-validation-popup .input__validation {
+.-validation-popup .nt-input__validation {
     visibility: visible;
 }
 
-.input__validation-text {
+.nt-input__validation-text {
     height: 100%;
     padding-left: 10;
     border-radius: 5;
@@ -46,7 +46,7 @@ NTInput {
     vertical-align: center;
 }
 
-.input__validation-arrow {
+.nt-input__validation-arrow {
     margin-left: -4;
     height: 30;
     width: 30;
@@ -54,7 +54,7 @@ NTInput {
     border-width: 16;
 }
 
-.input__validation-shadow {
+.nt-input__validation-shadow {
     margin-left: -2;
     height: 32;
     width: 32;
