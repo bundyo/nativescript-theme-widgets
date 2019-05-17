@@ -1,0 +1,33 @@
+ActionBar,
+NTActionBar {
+    width: 100%;
+}
+
+ActionBar,
+NTActionBar > GridLayout {
+    width: 100%;
+    height: 100%;
+}
+
+.-ios NTActionBar > GridLayout {
+    margin-left: -16;
+}
+
+.-android NTActionBar > GridLayout {
+    height: 56;
+}
+
+NTActionBar > GridLayout > NTIcon {
+    font-size: 24;
+    margin-left: 16;
+}
+
+NTActionBar > GridLayout > Label,
+NTActionBar > GridLayout > NTIcon {
+    vertical-align: center;
+}
+
+NTActionBar > GridLayout > Label {
+    font-size: 17;
+    margin: 0 16;
+}

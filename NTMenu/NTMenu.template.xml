@@ -1,0 +1,8 @@
+<ListView class="nt-menu__list" items="{{ items }}" itemTap="{{ onTap }}" xmlns:ui="nativescript-theme-widgets">
+    <ListView.itemTemplate>
+        <StackLayout orientation="horizontal" class="{{ value === $parent.selected ? 'active' : '' }}">
+            <ui:NTIcon class="nt-menu__icon" name="{{ icon }}" />
+            <Label class="nt-menu__text" text="{{ text || value }}" />
+        </StackLayout>
+    </ListView.itemTemplate>
+</ListView>

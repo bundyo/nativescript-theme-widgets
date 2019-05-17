@@ -29,7 +29,7 @@ export const variantProperty = new Property({
     valueChanged: updateIcon
 });
 
-export class ThemeIcon extends Label {
+export class NTIcon extends Label {
     updateIcon() {
         if (!this._styleScope) {
             return;
@@ -48,7 +48,7 @@ export class ThemeIcon extends Label {
                 if (dec.property === "content") {
                     this.text = String.fromCharCode(`0x${(dec.value.match(/[a-f\d]{2,4}/i) || [])[0]}`);
 
-                    updateClasses(this, ["theme__icon", newIcon.variant, newIcon.className],
+                    updateClasses(this, ["nt-icon", newIcon.variant, newIcon.className],
                                      [lastIcon.variant, lastIcon.className]);
 
                     lastIcon = newIcon;
@@ -65,10 +65,10 @@ export class ThemeIcon extends Label {
     }
 }
 
-nsProperty.register(ThemeIcon);
-nameProperty.register(ThemeIcon);
-variantProperty.register(ThemeIcon);
+nsProperty.register(NTIcon);
+nameProperty.register(NTIcon);
+variantProperty.register(NTIcon);
 
 decorate([
-    CSSType("ThemeIcon")
-], ThemeIcon);
+    CSSType("NTIcon")
+], NTIcon);

@@ -1,13 +1,13 @@
 import { CSSType, Property } from "tns-core-modules/ui/core/view";
 import { ActionBar } from "tns-core-modules/ui/action-bar";
 import { parse } from "tns-core-modules/ui/builder";
-import template from "./ThemeCustomActionBar.template.xml";
+import template from "./NTActionBar.template.xml";
 import { isAndroid } from "tns-core-modules/platform";
 import { decorate } from "../utils/utils";
 
 export const titleProperty = new Property({name: "title", defaultValue: undefined});
 
-export class ThemeCustomActionBar extends ActionBar {
+export class NTActionBar extends ActionBar {
     static get menuEvent() { return "menu" }
     static get backEvent() { return "back" }
 
@@ -30,9 +30,9 @@ export class ThemeCustomActionBar extends ActionBar {
     }
 }
 
-titleProperty.register(ThemeCustomActionBar);
+titleProperty.register(NTActionBar);
 
 decorate([
-    CSSType("ThemeCustomActionBar")
-], ThemeCustomActionBar);
+    CSSType("NTActionBar")
+], NTActionBar);
 

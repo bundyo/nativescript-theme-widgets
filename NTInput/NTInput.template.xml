@@ -7,7 +7,7 @@
         <label col="1" class="input__validation-arrow" />
     </GridLayout>-->
     <Label class="input__label" text="{{ label }}" visibility="{{ label !== undefined ? 'visible' : 'collapsed' }}" />
-    <ui:ThemeIcon row="1" class="input__icon" name="{{ valid ? 'check-circle' : 'exclamation-circle' }}" tap="{{ showPopup }}" />
+    <ui:NTIcon row="1" class="input__icon" name="{{ valid ? 'check-circle' : 'exclamation-circle' }}" tap="{{ showPopup }}" />
     <TextField row="1" class="input__field" />
 <!--    visibility="{{ !valid ? 'visible' : 'collapsed' }}"-->
 </GridLayout>

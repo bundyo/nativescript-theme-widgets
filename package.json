@@ -1,8 +1,8 @@
 {
   "name": "nativescript-theme-widgets",
   "version": "0.1.0",
-  "description": "Telerik NativeScript Theme Widgets",
-  "author": "Telerik <support@telerik.com>",
+  "description": "NativeScript Theme Widgets",
+  "author": "Bundyo <bundyo@gmail.com>",
   "main": "index",
   "homepage": "https://www.nativescript.org",
   "repository": {
@@ -29,11 +29,7 @@
   "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "peerDependencies": {
-    "tns-core-modules": "^5.3.1",
+    "tns-core-modules": "5.4.0",
     "nativescript-theme-core": "2.0.0-alpha"
-  },
-  "devDependencies": {
-    "tns-core-modules": "^5.3.1",
-    "nativescript-theme-widgets": "./"
   }
 }

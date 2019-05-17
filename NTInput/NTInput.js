@@ -2,12 +2,12 @@ import { Property, CSSType } from "tns-core-modules/ui/core/view";
 import { GridLayout } from "tns-core-modules/ui/layouts/grid-layout";
 import { parse } from "tns-core-modules/ui/builder";
 import { decorate, updateClasses } from "../utils/utils";
-import template from "./ThemeInput.template.xml";
+import template from "./NTInput.template.xml";
 
 export const labelProperty = new Property({ name: "label", defaultValue: undefined });
 export const validProperty = new Property({ name: "valid", defaultValue: true });
 
-export class ThemeInput extends GridLayout {
+export class NTInput extends GridLayout {
     static get changeEvent() { return "change" }
 
     constructor() {
@@ -50,9 +50,9 @@ export class ThemeInput extends GridLayout {
     }
 }
 
-labelProperty.register(ThemeInput);
-validProperty.register(ThemeInput);
+labelProperty.register(NTInput);
+validProperty.register(NTInput);
 
 decorate([
-    CSSType("ThemeInput")
-], ThemeInput);
+    CSSType("NTInput")
+], NTInput);
