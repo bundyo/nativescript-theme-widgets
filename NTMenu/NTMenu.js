@@ -24,7 +24,7 @@ export class NTMenu extends GridLayout {
     }
 
     onTap(args) {
-        this.itemSelected(this.items.getItem(args.index), args);
+        this.itemSelected(this.items[args.index] || this.items.getItem(args.index), args);
     }
 }
 
