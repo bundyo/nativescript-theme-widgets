@@ -48,8 +48,9 @@ export class NTIcon extends Label {
                 if (dec.property === "content") {
                     const value = dec.value.replace(/^"|"$/g, "");
 
-                    this.text = value.length === 1 ? value :
-                                String.fromCharCode(`0x${(value.match(/[a-f\d]{2,4}/i) || [])[0]}`);
+                    this.text = value.startsWith("\\") ?
+                                String.fromCharCode(`0x${(value.match(/[a-f\d]{2,4}/i) || [])[0]}`) :
+                                value;
 
                     updateClasses(this, ["nt-icon", newIcon.variant, newIcon.className],
                                      [lastIcon.variant, lastIcon.className]);
