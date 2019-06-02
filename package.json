@@ -29,7 +29,7 @@
   "license": "Apache-2.0",
   "readmeFilename": "README.md",
   "peerDependencies": {
-    "tns-core-modules": "5.4.0",
+    "tns-core-modules": "5.4.1",
     "nativescript-theme-core": "2.0.0-alpha"
   }
 }
