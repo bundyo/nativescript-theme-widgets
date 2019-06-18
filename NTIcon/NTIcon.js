@@ -1,78 +1,97 @@
 import { CSSType, Property } from "tns-core-modules/ui/core/view";
+import { Span } from "tns-core-modules/text/span";
 import { Label } from "tns-core-modules/ui/label";
 import { decorate, updateClasses } from "../utils/utils";
 
-const updateIcon = (target) => target.updateIcon();
-
-let lastIcon = {
+const lastIcon = {
     className: "",
     variant: ""
 };
 
-export const nameProperty = new Property({
-    name: "name",
-    defaultValue: undefined,
-    valueChanged: updateIcon
-});
+function updateIcon(component) {
+    if (!component._styleScope) {
+        return;
+    }
 
-export const nsProperty = new Property({
+    if (!component.lastIcon) {
+        component.lastIcon = lastIcon;
+    }
+
+    const newIcon = {
+        className: `${component.ns}-${component.name}`,
+        variant: component.variant
+    };
+    const icon = component._styleScope._selectors.class[newIcon.className];
+
+    icon && icon
+        .flatMap((value) => value.sel.ruleset.declarations)
+        .reverse()
+        .some((dec) => {
+            if (dec.property === "content") {
+                const value = dec.value.replace(/^"|"$/g, "");
+
+                component.text = value.startsWith("\\") ?
+                    String.fromCharCode(`0x${(value.match(/[a-f\d]{2,4}/i) || [])[0]}`) :
+                    value;
+
+                updateClasses(component, ["nt-icon", newIcon.variant, newIcon.className],
+                    [component.lastIcon.variant, component.lastIcon.className]);
+
+                component.lastIcon = newIcon;
+
+                return true;
+            }
+        });
+}
+
+const nsArgs = {
     name: "ns",
     defaultValue: "fa",
     valueChanged: (target, oldValue, newValue) => {
         updateClasses(target, newValue, oldValue);
     }
-});
+};
 
-export const variantProperty = new Property({
+const nameArgs = {
+    name: "name",
+    defaultValue: undefined,
+    valueChanged: updateIcon
+};
+
+const variantArgs = {
     name: "variant",
     defaultValue: "fa",
     valueChanged: updateIcon
-});
+};
 
 export class NTIcon extends Label {
-    updateIcon() {
-        if (!this._styleScope) {
-            return;
-        }
-
-        const newIcon = {
-            className: `${this.ns}-${this.name}`,
-            variant: this.variant
-        };
-        const icon = this._styleScope._selectors.class[newIcon.className];
-
-        icon && icon
-            .flatMap((value) => value.sel.ruleset.declarations)
-            .reverse()
-            .some((dec) => {
-                if (dec.property === "content") {
-                    const value = dec.value.replace(/^"|"$/g, "");
-
-                    this.text = value.startsWith("\\") ?
-                                String.fromCharCode(`0x${(value.match(/[a-f\d]{2,4}/i) || [])[0]}`) :
-                                value;
-
-                    updateClasses(this, ["nt-icon", newIcon.variant, newIcon.className],
-                                     [lastIcon.variant, lastIcon.className]);
-
-                    lastIcon = newIcon;
-
-                    return true;
-                }
-            });
-    }
-
     onLoaded() {
         super.onLoaded();
 
-        this.updateIcon();
+        updateIcon(this);
     }
 }
 
-nsProperty.register(NTIcon);
-nameProperty.register(NTIcon);
-variantProperty.register(NTIcon);
+export class NTSpanIcon extends Span {
+    onLoaded() {
+        super.onLoaded();
+
+        updateIcon(this);
+    }
+}
+
+new Property(nsArgs).register(NTIcon);
+new Property(nameArgs).register(NTIcon);
+new Property(variantArgs).register(NTIcon);
+
+new Property(nsArgs).register(NTSpanIcon);
+new Property(nameArgs).register(NTSpanIcon);
+new Property(variantArgs).register(NTSpanIcon);
 
 decorate([
     CSSType("NTIcon")
 ], NTIcon);
+
+decorate([
+    CSSType("NTSpanIcon")
+], NTSpanIcon);
