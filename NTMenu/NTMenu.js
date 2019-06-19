@@ -35,6 +35,4 @@ iconFieldProperty.register(NTMenu);
 valueFieldProperty.register(NTMenu);
 itemSelectedProperty.register(NTMenu);
 
-decorate([
-    CSSType("NTMenu")
-], NTMenu);
+decorate(CSSType, NTMenu);

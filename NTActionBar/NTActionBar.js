@@ -32,7 +32,5 @@ export class NTActionBar extends ActionBar {
 
 titleProperty.register(NTActionBar);
 
-decorate([
-    CSSType("NTActionBar")
-], NTActionBar);
+decorate(CSSType, NTActionBar);
 

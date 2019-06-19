@@ -28,7 +28,7 @@ export function updateClasses(view, toAdd, toRemove) {
     view.className = classList.join(" ");
 }
 
-export function decorate(decorators, target, key, desc) {
+export function applyDecoration(decorators, target, key, desc) {
     const argumentLength = arguments.length;
 
     if (argumentLength >= 3 && desc === null) {
@@ -38,4 +38,10 @@ export function decorate(decorators, target, key, desc) {
     const descriptor = Reflect.decorate(decorators, target, key, desc);
 
     return argumentLength > 3 && descriptor && Object.defineProperty(target, key, descriptor) && descriptor;
+}
+
+export function decorate(decorator, cls) {
+    applyDecoration([
+        decorator(cls.name)
+    ], cls);
 }

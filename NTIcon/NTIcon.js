@@ -79,10 +79,5 @@ const ExtendIcon = (Base) => {
 export class NTIcon extends ExtendIcon(Label) {}
 export class NTSpanIcon extends ExtendIcon(Span) {}
 
-decorate([
-    CSSType("NTIcon")
-], NTIcon);
-
-decorate([
-    CSSType("NTSpanIcon")
-], NTSpanIcon);
+decorate(CSSType, NTIcon);
+decorate(CSSType, NTSpanIcon);

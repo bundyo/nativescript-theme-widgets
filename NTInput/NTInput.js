@@ -53,6 +53,4 @@ export class NTInput extends GridLayout {
 labelProperty.register(NTInput);
 validProperty.register(NTInput);
 
-decorate([
-    CSSType("NTInput")
-], NTInput);
+decorate(CSSType, NTInput);

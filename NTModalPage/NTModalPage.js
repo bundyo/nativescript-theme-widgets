@@ -4,6 +4,4 @@ import { Page } from "tns-core-modules/ui/page";
 
 export class NTModalPage extends Page {}
 
-decorate([
-    CSSType("NTModalPage")
-], NTModalPage);
+decorate(CSSType, NTModalPage);
