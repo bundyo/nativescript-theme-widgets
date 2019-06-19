@@ -44,49 +44,40 @@ function updateIcon(component) {
         });
 }
 
-const nsArgs = {
-    name: "ns",
-    defaultValue: "fa",
-    valueChanged: (target, oldValue, newValue) => {
-        updateClasses(target, newValue, oldValue);
+const ExtendIcon = (Base) => {
+    class IconBase extends Base {
+        onLoaded() {
+            super.onLoaded();
+
+            updateIcon(this);
+        }
     }
+
+    new Property({
+        name: "ns",
+        defaultValue: "fa",
+        valueChanged: (target, oldValue, newValue) => {
+            updateClasses(target, newValue, oldValue);
+        }
+    }).register(IconBase);
+
+    new Property({
+        name: "name",
+        defaultValue: undefined,
+        valueChanged: updateIcon
+    }).register(IconBase);
+
+    new Property({
+        name: "variant",
+        defaultValue: "fa",
+        valueChanged: updateIcon
+    }).register(IconBase);
+
+    return IconBase;
 };
 
-const nameArgs = {
-    name: "name",
-    defaultValue: undefined,
-    valueChanged: updateIcon
-};
-
-const variantArgs = {
-    name: "variant",
-    defaultValue: "fa",
-    valueChanged: updateIcon
-};
-
-export class NTIcon extends Label {
-    onLoaded() {
-        super.onLoaded();
-
-        updateIcon(this);
-    }
-}
-
-export class NTSpanIcon extends Span {
-    onLoaded() {
-        super.onLoaded();
-
-        updateIcon(this);
-    }
-}
-
-new Property(nsArgs).register(NTIcon);
-new Property(nameArgs).register(NTIcon);
-new Property(variantArgs).register(NTIcon);
-
-new Property(nsArgs).register(NTSpanIcon);
-new Property(nameArgs).register(NTSpanIcon);
-new Property(variantArgs).register(NTSpanIcon);
+export class NTIcon extends ExtendIcon(Label) {}
+export class NTSpanIcon extends ExtendIcon(Span) {}
 
 decorate([
     CSSType("NTIcon")
